@@ -230,6 +230,7 @@ DEPENDENCIES
   oauth2
   pg
   rails
+  responders
   rspec-rails
   sass-rails
   shoulda-matchers

@@ -18,5 +18,6 @@ RSpec.describe User do
     end
 
     it { is_expected.to have_db_column(:experience_points).of_type(:decimal) }
+    it { is_expected.to have_db_column(:access_token).of_type(:string) }
   end
 end

@@ -45,8 +45,6 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-  FactoryGirl.find_definitions
-
   RSpec.configure do |config|
     config.include(FactoryGirl::Syntax::Methods)
   end
