@@ -24,7 +24,6 @@ gem 'oauth2'
 gem 'moves'
 gem 'responders'
 
-
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
