@@ -7,10 +7,9 @@ class DashboardController < ApplicationController
   def index
     if code == 0
       redirect
-    elsif code
-      byebug
-      response = redirect_access_token unless current_user.access_token
-      current_user.update(access_token: access_token)
+    elsif code and !current_user.access_token
+      response = redirect_access_token
+      current_user.update(access_token: response.token)
     end
     @client = client
   end
@@ -19,9 +18,6 @@ class DashboardController < ApplicationController
 
   def client
     MovesApi::CLIENT
-  end
-
-  def access_token
   end
 
   def redirect
@@ -37,9 +33,7 @@ class DashboardController < ApplicationController
     client.auth_code.get_token(
       code,
       redirect_uri: 'http://localhost:3000/',
-      client_id: Rails.application.secrets.moves_client_id,
-      client_secret: Rails.application.secrets.moves_secret_id,
-      # headers: { grant_type: 'authorization_code' }
+      headers: { grant_type: 'authorization_code' }
     )
   end
 
