@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'dashboard#index'
+  authenticate :user do
+    root 'dashboard#index'
+  end
 
   devise_for :users
 
