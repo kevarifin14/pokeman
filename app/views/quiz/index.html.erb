@@ -1,0 +1,24 @@
+<%= form_tag("/quiz/determine_avatar") do %>
+  <p>Breakfast, lunch, or dinner?</p>
+  <%= radio_button_tag(:q1, "breakfast") %>
+  <%= label_tag(:q1_breakfast, "Breakfast") %>
+  <%= radio_button_tag(:q1, "lunch") %>
+  <%= label_tag(:q1_lunch, "Lunch") %>
+  <%= radio_button_tag(:q1, "dinner") %>
+  <%= label_tag(:q1_dinner, "Dinner") %>
+  <p>Favorite season?</p>
+  <%= radio_button_tag(:q2, "fall") %>
+  <%= label_tag(:q2_fall, "Fall") %>
+  <%= radio_button_tag(:q2, "winter") %>
+  <%= label_tag(:q2_winter, "Winter") %>
+  <%= radio_button_tag(:q2, "spring") %>
+  <%= label_tag(:q2_spring, "Spring") %>
+  <%= radio_button_tag(:q2, "summer") %>
+  <%= label_tag(:q2_summer, "Summer") %>
+  <p>Day or night?</p>
+  <%= radio_button_tag(:q3, "day") %>
+  <%= label_tag(:q3_day, "Day") %>
+  <%= radio_button_tag(:q3, "night") %>
+  <%= label_tag(:q3_night, "Night") %>
+  <%= submit_tag "Submit" %>
+<% end %>
