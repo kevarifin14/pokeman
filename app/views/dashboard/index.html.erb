@@ -1,0 +1,6 @@
+<% if !current_user.access_token %>
+  <% render 'not_authenticated', client: @client %>
+
+<% else %>
+  <% render 'authenticated', client: @client %>
+<div class="progress-bar" width="<%= fill_width %>"><div>

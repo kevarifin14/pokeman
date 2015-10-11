@@ -1,0 +1,12 @@
+div.progress-bar {
+  height: 4px;
+  width: 0px;
+}
+div.progress-bar::before {
+  height: 4px;
+  width: 400px;
+  background-color: #bfbfbf;
+  position: absolute;
+  content: "";
+  z-index: -1;
+}
