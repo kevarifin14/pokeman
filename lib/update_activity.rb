@@ -8,7 +8,6 @@ UpdateActivity = MethodObject.new(:client, :user) do
   private
 
   def add_experience_points
-    byebug
     selected_activities.each do |activity_log|
       activity_log.each do |activity|
         update_experience(activity)
