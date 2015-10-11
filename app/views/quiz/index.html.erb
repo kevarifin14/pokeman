@@ -1,3 +1,5 @@
+<div class="col-md-4 col-md-offset-4">
+<h2>Take this quiz first</h2>
 <%= form_tag("/quiz/determine_avatar") do %>
   <p>Breakfast, lunch, or dinner?</p>
   <%= radio_button_tag(:q1, "breakfast") %>
@@ -20,5 +22,7 @@
   <%= label_tag(:q3_day, "Day") %>
   <%= radio_button_tag(:q3, "night") %>
   <%= label_tag(:q3_night, "Night") %>
+  <p>You're done!</p>
   <%= submit_tag "Submit" %>
 <% end %>
+</div>
