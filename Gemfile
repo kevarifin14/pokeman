@@ -23,6 +23,7 @@ gem 'database_cleaner'
 gem 'oauth2'
 gem 'moves'
 gem 'responders'
+gem 'method_man'
 
 group :development, :test do
   gem 'byebug'

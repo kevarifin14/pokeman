@@ -10,6 +10,7 @@ class DashboardController < ApplicationController
     elsif code and !current_user.access_token
       response = redirect_access_token
       current_user.update(access_token: response.token)
+      UploadPastActivity.call(client: moves_client, user: current_user)
     end
     @client = client
   end
@@ -18,6 +19,10 @@ class DashboardController < ApplicationController
 
   def client
     MovesApi::CLIENT
+  end
+
+  def moves_client
+    Moves::Client.new(current_user.access_token)
   end
 
   def redirect

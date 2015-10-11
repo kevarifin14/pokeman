@@ -104,6 +104,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    method_man (1.0.0)
     mime-types (2.6.2)
     mini_portile (0.6.2)
     minitest (5.8.1)
@@ -226,6 +227,7 @@ DEPENDENCIES
   factory_girl_rails
   haml-rails
   jquery-rails
+  method_man
   moves
   oauth2
   pg
