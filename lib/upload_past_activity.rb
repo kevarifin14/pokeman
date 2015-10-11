@@ -20,6 +20,7 @@ UploadPastActivity = MethodObject.new(:client, :user) do
       experience_points:
         activity_conversion(daily_summary) + user.experience_points,
     )
+    user.reload
   end
 
   def activity_conversion(daily_summary)

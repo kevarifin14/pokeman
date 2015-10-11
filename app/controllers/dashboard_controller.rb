@@ -1,17 +1,20 @@
 require 'oauth2'
 require 'net/https'
 require 'open-uri'
+require './lib/upload_past_activity'
 
 class DashboardController < ApplicationController
   REDIRECT_URI = 'http://localhost:3000/'
   def index
-    if code == 0
+    if code == 0 and !current_user.access_token
       redirect
     elsif code and !current_user.access_token
       response = redirect_access_token
       current_user.update(access_token: response.token)
       UploadPastActivity.call(client: moves_client, user: current_user)
     end
+
+    update_activities
     @client = client
   end
 
@@ -19,6 +22,10 @@ class DashboardController < ApplicationController
 
   def client
     MovesApi::CLIENT
+  end
+
+  def update_activities
+    UpdateActivity.call(client: moves_client, user: current_user)
   end
 
   def moves_client
@@ -30,8 +37,6 @@ class DashboardController < ApplicationController
       redirect_uri: REDIRECT_URI,
       scope: 'activity',
     )
-    # response = token.get('/api/resource', :params => { 'query_foo' => 'bar' })
-    # response.class.name
   end
 
   def redirect_access_token

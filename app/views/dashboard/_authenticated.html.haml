@@ -1,1 +1,8 @@
-=current_user.experience_points
+.col-md-2
+.col-md-8.align-right
+  %b Level:
+  %h1=number_with_precision(current_user.level, precision: 0)
+
+  %b Experience Points:
+  %h1=number_with_precision(current_user.experience_points, precision: 2)
+.col-md-2
