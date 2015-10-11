@@ -5,7 +5,7 @@ require './lib/upload_past_activity'
 require './lib/update_activity'
 
 class DashboardController < ApplicationController
-  REDIRECT_URI = 'http://localhost:3000/'
+  REDIRECT_URI = 'http://pokeman.herokuapp.com/'
   def index
     if !code and !current_user.access_token
       redirect
@@ -48,7 +48,7 @@ class DashboardController < ApplicationController
   def redirect_access_token
     client.auth_code.get_token(
       code,
-      redirect_uri: 'http://localhost:3000/',
+      redirect_uri: REDIRECT_URI,
       headers: { grant_type: 'authorization_code' }
     )
   end
