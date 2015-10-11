@@ -1,9 +1,11 @@
 <% if !current_user.access_token %>
-  <% render 'not_authenticated', client: @client %>
+  <%= render 'not_authenticated', client: @client %>
 
 <% else %>
-  <% render 'authenticated', client: @client %>
+  <%= render 'authenticated', client: @client %>
+  <%= render 'progress_bar' %>
 <% end %>
+
 <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
 
-<div class="progress-bar" style="width: <%=fill_width%>px;"><div>
+

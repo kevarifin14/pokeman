@@ -66,7 +66,7 @@ UpdateActivity = MethodObject.new(:client, :user) do
     data_hash.each do |data|
       array_segments << data.fetch('segments')
     end
-    array_segments
+    array_segments.compact
   end
 
   def data_hash
