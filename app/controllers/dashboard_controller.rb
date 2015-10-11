@@ -7,7 +7,7 @@ require './lib/update_activity'
 class DashboardController < ApplicationController
   REDIRECT_URI = 'http://localhost:3000/'
   def index
-    if !current_user.access_token
+    if !code and !current_user.access_token
       redirect
     elsif code and !current_user.access_token
       response = redirect_access_token

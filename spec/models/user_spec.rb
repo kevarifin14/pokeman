@@ -20,4 +20,10 @@ RSpec.describe User do
     it { is_expected.to have_db_column(:experience_points).of_type(:decimal) }
     it { is_expected.to have_db_column(:access_token).of_type(:string) }
   end
+
+  describe '#level' do
+    let(:user) { create(User, experience_points: experience_points) }
+    let(:experience_points) { 0 }
+    specify { expect(user.level).to eq(1) }
+  end
 end
