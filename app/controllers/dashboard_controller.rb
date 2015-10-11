@@ -5,8 +5,8 @@ require './lib/upload_past_activity'
 require './lib/update_activity'
 
 class DashboardController < ApplicationController
-  # REDIRECT_URI = 'http://pokeman.herokuapp.com/'
-  REDIRECT_URI = 'http://localhost:3000/'
+  REDIRECT_URI = 'http://pokeman.herokuapp.com/'
+  # REDIRECT_URI = 'http://localhost:3000/'
   def index
     has_redirect = false
     flag = 0
