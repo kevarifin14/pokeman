@@ -2,6 +2,7 @@ require 'oauth2'
 require 'net/https'
 require 'open-uri'
 require './lib/upload_past_activity'
+require './lib/update_activity'
 
 class DashboardController < ApplicationController
   REDIRECT_URI = 'http://localhost:3000/'
@@ -13,7 +14,6 @@ class DashboardController < ApplicationController
       current_user.update(access_token: response.token)
       UploadPastActivity.call(client: moves_client, user: current_user)
     end
-
     update_activities
     @client = client
   end
