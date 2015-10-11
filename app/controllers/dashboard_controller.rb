@@ -5,10 +5,15 @@ require './lib/upload_past_activity'
 require './lib/update_activity'
 
 class DashboardController < ApplicationController
-  REDIRECT_URI = 'http://pokeman.herokuapp.com/'
+  # REDIRECT_URI = 'http://pokeman.herokuapp.com/'
+  REDIRECT_URI = 'http://localhost:3000/'
   def index
+    has_redirect = false
+    flag = 0
     if !code and !current_user.access_token
       redirect
+      has_redirect = true
+      flag = -1
     elsif code and !current_user.access_token
       response = redirect_access_token
       current_user.update(access_token: response.token)
@@ -17,7 +22,7 @@ class DashboardController < ApplicationController
     if current_user.access_token
       update_activities
     end
-    if !current_user.avatar
+    if !current_user.avatar and not has_redirect
       redirect_to quiz_index_path
     end
 
@@ -54,6 +59,6 @@ class DashboardController < ApplicationController
   end
 
   def code
-    params.fetch(:code, 0)
+    params[:code]
   end
 end

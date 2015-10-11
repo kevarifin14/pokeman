@@ -8,7 +8,10 @@ UploadPastActivity = MethodObject.new(:client, :user) do
   private
 
   def add_experience_points
+    return unless daily_summaries != nil
+    daily_summaries.flatten
     daily_summaries.each do |daily_summary|
+      return if daily_summary == nil
       daily_summary.each do |activity|
         update_experience(activity)
       end
