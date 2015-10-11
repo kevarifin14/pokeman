@@ -44,7 +44,7 @@ UploadPastActivity = MethodObject.new(:client, :user) do
     data_hash.each do |data|
       summaries << data.fetch('summary')
     end
-    summaries.flatten
+    summaries.compact
   end
 
   def data_hash
