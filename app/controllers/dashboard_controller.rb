@@ -7,14 +7,16 @@ require './lib/update_activity'
 class DashboardController < ApplicationController
   REDIRECT_URI = 'http://localhost:3000/'
   def index
-    if code == 0 and !current_user.access_token
+    if !current_user.access_token
       redirect
     elsif code and !current_user.access_token
       response = redirect_access_token
       current_user.update(access_token: response.token)
       UploadPastActivity.call(client: moves_client, user: current_user)
     end
-    update_activities
+    if current_user.access_token
+      update_activities
+    end
     @client = client
   end
 
