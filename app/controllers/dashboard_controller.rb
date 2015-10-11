@@ -17,6 +17,10 @@ class DashboardController < ApplicationController
     if current_user.access_token
       update_activities
     end
+    if !current_user.avatar
+      redirect_to quiz_index_path
+    end
+
     @client = client
   end
 
